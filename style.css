@@ -1,0 +1,594 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  /* Pastikan ada 4 angka di rgba dan path gambar benar */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), transparent), url(../Image/coffee_1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 0 8%;
+  position: relative;
+}
+/* Styling Ikon Hamburger (Default Sembunyi) */
+.menu-btn, .close-btn {
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  display: none; /* Sembunyi di Desktop */
+}
+nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px 0;
+}
+nav ul {
+  flex: 1;
+  text-align: right;
+  padding-right: 30px;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 30px 60px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  padding: 15px;
+}
+nav ul li a::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  transition: width 0.3s;
+}
+nav ul li a:hover::after {
+  width: 50%;
+}
+
+.text-box {
+  color: #fff;
+  position: absolute;
+  bottom: 8%;
+}
+.text-box p {
+  font-size: 50px;
+  font-weight: 600;
+}
+.text-box h1 {
+  font-size: 190px;
+  line-height: 160px;
+  margin-left: -10px;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  background: url(../Image/OIP.jpeg);
+  -webkit-background-clip: text;
+  background-position: 0 0;
+  animation: back 20s linear infinite;
+}
+@keyframes back {
+  100% {
+    background-position: 2000px 0;
+  }
+}
+.text-box h3 {
+  font-size: 40px;
+  font-weight: 500;
+}
+.text-box .row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.text-box a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-right: 20px;
+  border: 2px solid #fff;
+  align-items: center;
+  background: transparent;
+  display: inline-flex;
+}
+.text-box a span {
+  font-size: 30px;
+  line-height: 15px;
+  margin-right: 5px;  
+}
+
+.social-icons{
+  position: absolute;
+  right: 5%;
+  bottom: 8%;
+}
+
+/* Menghilangkan garis bawah dan mengatur warna teks/ikon */
+.social-icons a {
+    text-decoration: none; /* Menghilangkan garis bawah */
+    color: #ffffff;        /* Mengubah warna menjadi putih terang */
+    display: flex;         /* Agar ikon dan teks sejajar rapi */
+    align-items: center;
+    gap: 8px;              /* Memberi jarak antara ikon dan teks */
+    margin-bottom: 10px;   /* Memberi jarak antar baris medsos */
+}
+/* Memberi efek saat kursor diarahkan (hover) agar lebih interaktif */
+.social-icons a:hover {
+    color: #f0f0f0;        /* Warna sedikit berubah saat disentuh */
+    opacity: 0.8;
+}
+/* --- Responsive Tablet & Mobile --- */
+@media (max-width: 992px) {
+  nav {
+    justify-content: flex-end;
+    padding: 20px 0;
+  }
+
+  .menu-btn {
+    display: block; /* Munculkan tombol hamburger */
+  }
+
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Sembunyi di luar layar kanan */
+    width: 70%;
+    height: 100vh;
+    background:  #c5a059; /* Warna biru gelap sesuai gambar Anda */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    transition: 0.5s;
+    z-index: 1000;
+    text-align: left;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  .close-btn {
+    display: block;
+    align-self: flex-end;
+    margin-bottom: 30px;
+  }
+
+  /* Logika Buka Menu saat Checkbox di-klik */
+  #check:checked ~ ul {
+    right: 0;
+  }
+
+  /* Penyesuaian Text Box di Layar Kecil */
+  .text-box h1 {
+    font-size: 80px;
+    line-height: 80px;
+  }
+  .text-box p { font-size: 30px; }
+  .text-box h3 { font-size: 20px; }
+
+  .social-icons {
+  display: none; /* <--- Ini yang membuatnya hilang di HP/Tablet */
+}
+}
+  
+/* About */
+.about{
+  height: 600px;
+}
+.image {
+    display: flex;           /* WAJIB: Mengaktifkan mode kotak fleksibel */
+    justify-content: center;  /* Mengatur konten ke tengah secara horizontal (kiri-kanan) */
+    align-items: center;      /* Mengatur konten ke tengah secara vertikal (atas-bawah) */
+    flex-wrap: wrap;         /* Agar gambar turun ke bawah jika layar HP/kecil */
+    gap: 20px;               /* Memberikan jarak antar gambar agar tidak menempel */
+    padding: 20px 10%;
+}
+@media (max-width: 600px) {
+  .text-box h1 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .image img {
+    width: 100% !important; /* Gambar memenuhi lebar HP */
+    height: auto !important;
+  }
+  .about {
+    height: auto;
+    padding-bottom: 50px;
+  }
+}
+
+/* Menu */
+/* Styling Section Menu */
+.menu {
+    padding: 5rem 7%; /* Menambah jarak atas agar tidak menimpa bagian About */
+    background:  #c5a059;
+    text-align: center;
+}
+
+/* Judul MENU */
+.menu h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Container untuk Box */
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+}
+
+
+/* Styling Setiap Kotak Menu */
+.box {
+    padding: 2rem;
+    background: #13131a; /* Warna kotak sedikit lebih terang dari background utama */
+    border: 1px solid #c5a059; /* Border warna Gold */
+    border-radius: 15px;
+    transition: 0.3s ease;
+}
+
+.box:hover {
+    background: #fff; /* Berubah jadi gold saat disentuh */
+}
+
+/* Mengatur Ukuran Gambar (Diperkecil) */
+.box img {
+    height: 15rem; /* Ukuran gambar diperkecil */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Styling Tulisan Judul Menu */
+.box h3 {
+    color: #fff;
+    font-size: 1.8rem; /* Font diperkecil */
+    padding: 1.5rem 0 0.5rem;
+}
+
+/* Styling Harga */
+.box .price {
+    color: #c5a059; /* Harga warna Gold */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.box .price span {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 1.1rem;
+    margin-left: 8px;
+}
+
+/* Styling Tombol Buy */
+.box a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 2.5rem;
+    font-size: 1.4rem; /* Ukuran font tombol diperkecil */
+    border-radius: 5px;
+    background: #c5a059; /* Warna Gold */
+    color: #000; /* Tulisan hitam agar kontras */
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.box:hover h3, 
+.box:hover .price,
+.box:hover .price span {
+    color: #000; /* Semua teks jadi hitam saat box di-hover ke gold */
+}
+
+.box:hover a {
+    background: #fff;
+    color: #000;
+}
+
+/* Supaya tidak menabrak About */
+#menu {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+
+
+/* Review */
+
+/* Styling Latar Belakang Section Review */
+.review {
+    background: #C59D5F;
+    padding: 3rem 9%;
+}
+
+/* Styling Judul Heading */
+.review .heading {
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Container utama kartu review (Grid agar responsif) */
+.review .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+    gap: 1.5rem; /* Jarak antar kartu */
+}
+
+/* Styling satu kotak (box) review (Kartu Horizontal) */
+.review .box-container .box {
+    background: #fff; /* Kartu berwarna putih seperti contoh gambar */
+    border: 0.1rem solid #e6e6e6;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex; /* Flexbox horizontal */
+    align-items: flex-start; /* Elemen sejajar ke atas */
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1); /* Efek bayangan tipis */
+    transition: 0.3s ease;
+}
+
+.review .box-container .box:hover {
+    transform: translateY(-5px); /* Efek melompat sedikit saat hover */
+}
+
+/* --- Bagian Kiri (Foto User) --- */
+.review .box-container .box .user-part {
+    margin-right: 2rem; /* Jarak antara foto dan teks */
+    flex-shrink: 0; /* Foto tidak akan mengecil */
+}
+
+/* Styling foto user (Lingkaran) */
+.review .box-container .box .user-part .user {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover; /* Foto tidak gepeng */
+    border: 0.2rem solid #e6e6e6; /* Border lingkaran tipis */
+    padding: 0.2rem;
+    background: #fff;
+}
+
+/* Khusus User Tanpa Foto (Ganti dengan ikon kamera) */
+.review .box-container .box .user-part.no-photo {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    background: #f1f1f1;
+    border: 0.1rem solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review .box-container .box .user-part.no-photo i {
+    font-size: 3rem;
+    color: #b7b7b7;
+}
+
+/* --- Bagian Kanan (Info & Testimoni) --- */
+.review .box-container .box .info-part {
+    flex-grow: 1; /* Bagian ini mengambil sisa ruang */
+}
+
+/* Styling Nama User (H3) */
+.review .box-container .box .info-part h3 {
+    font-size: 2rem;
+    color: #333; /* Warna gelap agar kontras di kartu putih */
+    margin: 0;
+}
+
+/* Styling Teks Lokasi */
+.review .box-container .box .info-part .location {
+    font-size: 1.4rem;
+    color: #777; /* Warna abu-abu pudar */
+    margin-bottom: 0.5rem;
+}
+
+/* Styling Bintang (Stars) */
+.review .box-container .box .info-part .stars i {
+    font-size: 1.4rem;
+    color: #f1c40f; /* Warna emas/kuning cerah khas Vespera Coffee */
+}
+
+/* Styling Teks Testimoni (Diperbarui) */
+.review .box-container .box .info-part .testimonial {
+    font-size: 1.5rem;
+    color: #555; /* Warna abu-abu gelap */
+    line-height: 1.6;
+    padding-top: 1rem; /* Jarak dari bintang */
+}
+
+
+/* Contact Us */
+/* Container utama untuk menyejajarkan maps dan form */
+.contact-row {
+    display: flex;
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Bagian Map */
+.map {
+    flex: 1 1 400px; /* Maps akan mengambil ruang minimal 400px */
+}
+
+.map iframe {
+    width: 100%;
+    height: 450px; /* Tentukan tinggi agar sejajar dengan form */
+    border-radius: 10px;
+    border: none;
+}
+/* Menyamakan H3 */
+.contact-row h3 {
+    color: white;           /* Memastikan warna putih */
+    font-size: 35px;        /* Ukuran besar sesuai permintaanmu */
+    text-align: center;     /* Membuat teks ke tengah */
+    margin-bottom: 20px;    /* Memberi jarak ke bawah */
+    width: 100%;            /* Memastikan heading mengambil ruang penuh agar bisa center */
+    display: block;
+}
+
+
+/* Styling Tombol Submit */
+.get-contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.get-contact .btn {
+    width: fit-content;
+    background: #ff4757; /* Ganti warna sesukamu */
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.contact .get-contact form .btn:hover {
+    background: #333; /* Warna saat kursor menempel */
+    letter-spacing: 2px;
+}
+/* Bagian Form */
+.get-contact {
+    flex: 1 1 400px; /* Form akan mengambil ruang yang sama dengan Maps */
+    background: transparent;
+}
+
+.contact-row form {
+    text-align: center;
+    padding: 1rem; /* Dikurangi agar tidak terlalu besar */
+}
+
+.contact-row form h3 {
+    color: white;           /* Memastikan warna putih */
+    font-size: 35px;        /* Ukuran besar sesuai permintaanmu */
+    text-align: center;     /* Membuat teks ke tengah */
+    margin-bottom: 20px;    /* Memberi jarak ke bawah */
+    width: 100%;            /* Memastikan heading mengambil ruang penuh agar bisa center */
+    display: block;
+}
+
+
+/* Kotak Input */
+.inputBox {
+    display: flex;
+    align-items: center;
+    background: #E8E741; /* Warna kuning sesuai gambar */
+    margin: 1rem 0;
+    padding: 0 1rem;
+    border: 1px solid #000;
+}
+
+.inputBox span {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 1.2rem; /* Ukuran input lebih proporsional */
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    color: #000;
+    outline: none;
+}
+
+/* footer */
+.footer {
+    background: #13131a; /* Latar belakang footer gelap */
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer .share {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem; /* Jarak antar ikon lebih rapat */
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Tampilan Dasar Ikon (Lebih Kecil) --- */
+.footer .share a {
+    height: 3rem;             /* Ukuran lingkaran jauh lebih kecil */
+    width: 3rem;
+    line-height: 3rem;        /* Simbol tetap di tengah */
+    font-size: 1.2rem;        /* Ukuran lambang ikon diperkecil */
+    color: #fff;              /* Warna lambang putih agar kontras */
+    border-radius: 50%;       /* Lingkaran sempurna */
+    display: inline-block;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+/* --- Warna Brand Langsung (Tanpa Perlu Hover) --- */
+
+/* 1. Facebook - Biru */
+.footer .share a.fa-facebook,
+.footer .share a.fa-facebook-f {
+    background-color: #3b5998;
+}
+
+/* 2. YouTube - Merah */
+.footer .share a.fa-youtube {
+    background-color: #ff0000;
+}
+
+/* 3. Instagram - Gradasi */
+.footer .share a.fa-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+/* 4. LinkedIn - Biru Profesional */
+.footer .share a.fa-linkedin,
+.footer .share a.fa-linkedin-in {
+    background-color: #0077b5;
+}
+
+/* --- Efek Saat Di-Hover (Opsional agar Interaktif) --- */
+.footer .share a:hover {
+    transform: scale(1.1);    /* Sedikit membesar saat disentuh */
+    filter: brightness(1.2);  /* Menjadi sedikit lebih terang */
+}
+
+/* --- Teks Credit --- */
+.footer .credit {
+    font-size: 1.4rem;        /* Ukuran teks disesuaikan */
+    color: #fff;
+    font-weight: 300;
+    padding-top: 1rem;
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .credit span {
+    color: #d3ad7f;           /* Warna cokelat kopi untuk nama brand */
+    font-weight: bold;
+}
